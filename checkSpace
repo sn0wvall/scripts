@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo -n  $(df -h --output=avail /home/beta | tail -n 1)
+echo -n " "
+echo -n  $(df -h --output=avail / | tail -n 1)

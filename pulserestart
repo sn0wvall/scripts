@@ -1,0 +1,7 @@
+#!/bin/sh
+
+killall pulseaudio
+
+sleep 2
+
+pulseaudio &

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+#  
+activewifi=$(nmcli c show --active | grep wifi)
+activevpn="$(nmcli c show --active | grep tun | head -1)"
+
+if [ -n "$activewifi" ]; then
+	test -n "$activevpn" && echo "$(nmcli c show --active | grep wifi | awk '{print $1;}')" && exit 0
+	echo " $(nmcli c show --active | grep wifi | awk '{print $1;}')"
+else
+	echo "DOWN"
+fi

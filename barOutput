@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo "$(checkSpace) | $(checkBattery) | $(checkWifiVPN) | $(checkUFW) | $(date +%R:%S) "

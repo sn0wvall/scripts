@@ -1,0 +1,7 @@
+#!/bin/sh
+
+#  
+# 
+active=$(sudo ufw status | grep inactive)
+
+test -z "$active" && echo  Firewall ON || echo  Firewall OFF

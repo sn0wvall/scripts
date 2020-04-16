@@ -1,0 +1,9 @@
+#!/bin/sh
+
+active=$(netctl list | grep "*")
+
+if [ -n "$active" ]; then
+	echo $(echo "$active" | tr "*" " ")
+else
+	echo DOWN
+fi

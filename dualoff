@@ -1,0 +1,4 @@
+#!/bin/sh
+
+xrandr --auto
+i3-msg restart

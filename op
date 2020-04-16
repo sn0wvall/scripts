@@ -1,0 +1,2 @@
+#!/bin/sh
+$EDITOR $(du -a ~/ | awk '{print $2}' | fzf)

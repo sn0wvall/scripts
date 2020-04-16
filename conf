@@ -1,0 +1,26 @@
+#!/bin/bash
+
+#Users should edit the following three variables
+
+
+shortname=(polybar modules user_modules i3 dunst vim rifle ranger colours urxvt i3blocks bspwm sxhkd st dwm zsh)
+#THIS MUST BE IN THE SAME ORDER AS THE SHORTNAME ARRAY
+namepath=(~/.config/polybar/config.ini ~/.config/polybar/modules.ini ~/.config/polybar/user_modules.ini ~/.config/i3/config ~/.config/dunst/dunstrc ~/.vim/vimrc ~/.config/ranger/rifle.conf ~/.config/ranger/rc.conf ~/.config/polybar/colors.ini ~/.Xresources ~/.config/i3blocks/config ~/.config/bspwm/bspwmrc ~/.config/sxhkd/sxhkdrc ~/.apps/st-0.8.2/config.h ~/.apps/dwm-6.2/config.h ~/.config/zsh/.zshrc)
+
+attempts=0
+found=false
+
+while [ "$attempts" -le "${#namepath[@]}" ]
+do
+	if [ "$1" = "${shortname[$attempts]}" ]
+	then
+		found=true
+		$EDITOR "${namepath[$attempts]}"		
+	fi
+	attempts=$(( $attempts + 1 ))
+done
+
+if [ $found = false ]
+then
+	echo "Not a registered configuration file"
+fi

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+full=$(acpi -b | grep Full)
+
+test -n "$full" && echo " 100%" || echo " $(acpi -b | grep -E -o '[0-9][0-9]?%')" 
