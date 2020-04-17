@@ -1,6 +1,0 @@
-#!/bin/sh
-
-xrandr --output eDP1 --mode 1920x1080 --output DP1 --mode 1920x1080
-sleep 1
-xrandr --output eDP1 --mode 1920x1080 --below DP1 --mode 1920x1080
-i3-msg restart
