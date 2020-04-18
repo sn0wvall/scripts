@@ -2,4 +2,8 @@
 
 full=$(acpi -b | grep Full)
 
-test -n "$full" && echo " 100%" || echo " $(acpi -b | grep -E -o '[0-9][0-9]?%')" 
+if [ -n "$full" ];then
+       	echo " 100%" 
+else
+	test "$(cat /sys/class/power_supply/BAT0/status)" = "Discharging" && echo " $(acpi -b | grep -E -o '[0-9][0-9]?%')" || echo " $(acpi -b | grep -E -o '[0-9][0-9]?%')" 
+fi
