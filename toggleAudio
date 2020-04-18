@@ -1,0 +1,14 @@
+speaker="$(amixer sget Speaker | grep '\[on\]')"
+headphone="$(amixer sget Headphone | grep '\[on\]')"
+master="$(amixer sget Master | grep '\[on\]')"
+
+if [ -n "$master" ]; then
+	amixer set Master mute
+	amixer set Headphone mute
+	amixer set Speaker mute
+else
+	amixer set Master unmute
+	amixer set Headphone unmute	
+	amixer set Speaker unmute
+fi
+

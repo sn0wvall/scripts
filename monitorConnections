@@ -4,7 +4,7 @@ while true; do
 
 	oldStatus=$(checkWifi)
 	oldStatusVPN=$(checkVPN)
-	sleep 5s
+	sleep 7s
 	newStatus=$(checkWifi)
 	newStatusVPN=$(checkVPN)
 
