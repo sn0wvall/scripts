@@ -1,8 +1,11 @@
-# Code inspired by content found at http://v3gard.com/2011/01/getting-cmus-to-cooperate-with-conky/
 #!/bin/sh
+
+# Code inspired by content found at http://v3gard.com/2011/01/getting-cmus-to-cooperate-with-conky/
 
 if ps -C cmus > /dev/null; then
 
+
+		
 	artist=`cmus-remote -Q | 
 			grep --text '^tag artist' | 
 			sed '/^tag artistsort/d' | 
@@ -12,6 +15,7 @@ if ps -C cmus > /dev/null; then
 			sed -e 's/tag title //' |
 			awk '{gsub("tag title ", "");print}'`
 
-	test -z "$title" || notify-send " $title" " <i>$artist</i>" && echo ""; 
+	test -z "$(cmus-remote -Q | grep status | grep playing)" && symbol="" || symbol=""
+	
+	notify-send "$symbol $title" " <i>$artist</i>"
 fi
-
