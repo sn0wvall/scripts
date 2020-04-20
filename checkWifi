@@ -2,4 +2,4 @@
 
 active=$(nmcli c show --active | grep wifi)
 
-test -n "$active" && echo "Connected to network $(nmcli c show --active | grep wifi | awk '{print $1;}')" || echo "Disconnected from network"
+test -n "$active" && echo " Connected to network $(nmcli c show --active | grep wifi | awk '{print $1;}')" || echo " Disconnected from network"

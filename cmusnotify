@@ -1,4 +1,5 @@
 # Code inspired by content found at http://v3gard.com/2011/01/getting-cmus-to-cooperate-with-conky/
+#!/bin/sh
 
 if ps -C cmus > /dev/null; then
 
@@ -11,6 +12,6 @@ if ps -C cmus > /dev/null; then
 			sed -e 's/tag title //' |
 			awk '{gsub("tag title ", "");print}'`
 
-	notify-send " $title" " <i>$artist</i>"; else echo ""; 
+	test -z "$title" || notify-send " $title" " <i>$artist</i>" && echo ""; 
 fi
 
