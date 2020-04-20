@@ -1,3 +1,16 @@
 #!/bin/sh
 
+test "$1" = "verbose" &&
+	echo "$(checkSpace v)" &&
+	echo &&
+	echo "$(checkBattery)" &&
+	echo "$(checkUFW)" &&
+	echo &&
+	echo "$(checkWifi)" &&
+	echo "$(checkVPN)" &&
+	echo &&
+        echo "$(date +%c)" &&
+	echo &&
+       	exit 0       
+
 echo "$(checkSpace) | $(checkBattery) | $(checkWifiVPN) | $(checkUFW) | $(date +%R:%S) "

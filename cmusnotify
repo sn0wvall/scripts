@@ -11,6 +11,6 @@ if ps -C cmus > /dev/null; then
 			sed -e 's/tag title //' |
 			awk '{gsub("tag title ", "");print}'`
 
-	notify-send "$title" "<i>$artist</i>"; else echo ""; 
+	notify-send " $title" " <i>$artist</i>"; else echo ""; 
 fi
 
