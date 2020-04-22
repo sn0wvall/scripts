@@ -3,7 +3,7 @@
 full=$(acpi -b | grep Full)
 
 if [ -n "$full" ];then
-       	echo " 100%" 
+       	echo " 100%" 
 else
 	test "$(cat /sys/class/power_supply/BAT0/status)" = "Discharging" && echo " $(acpi -b | grep -E -o '[0-9][0-9]?%')" || echo " $(acpi -b | grep -E -o '[0-9][0-9]?%')" 
 fi
