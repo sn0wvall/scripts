@@ -1,9 +1,27 @@
 #!/bin/sh
 
 full=$(acpi -b | grep Full)
+charge="$(cat /sys/class/power_supply/BAT0/capacity)"
+
+generateLevel(){
+
+	test $charge -lt 10 && level="" && return 0
+	test $charge -lt 20 && level="" && return 0
+	test $charge -lt 30 && level="" && return 0
+	test $charge -lt 40 && level="" && return 0
+	test $charge -lt 50 && level="" && return 0
+	test $charge -lt 60 && level="" && return 0
+	test $charge -lt 70 && level="" && return 0
+	test $charge -lt 80 && level="" && return 0
+	test $charge -lt 90 && level="" && return 0
+	test $charge -lt 99 && level="" && return 0
+
+}
+
+generateLevel
 
 if [ -n "$full" ];then
        	echo " 100%" 
 else
-	test "$(cat /sys/class/power_supply/BAT0/status)" = "Discharging" && echo " $(acpi -b | grep -E -o '[0-9][0-9]?%')" || echo " $(acpi -b | grep -E -o '[0-9][0-9]?%')" 
+	test "$(cat /sys/class/power_supply/BAT0/status)" = "Discharging" && echo "$level $(acpi -b | grep -E -o '[0-9][0-9]?%')" || echo " $(acpi -b | grep -E -o '[0-9][0-9]?%')" 
 fi
