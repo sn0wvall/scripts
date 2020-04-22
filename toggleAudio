@@ -1,5 +1,3 @@
-speaker="$(amixer sget Speaker | grep '\[on\]')"
-headphone="$(amixer sget Headphone | grep '\[on\]')"
 master="$(amixer sget Master | grep '\[on\]')"
 
 if [ -n "$master" ]; then

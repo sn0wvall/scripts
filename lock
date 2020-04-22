@@ -1,3 +1,4 @@
 xsel -bc
 cmus-remote -s
+
 i3lock --pass-media-keys -i ~/media/images/bkg/lockBackground.png --insidecolor=00000000 --ringcolor=000000ff --timestr=%H:%M:%S --timecolor=ffffffff --keyhlcolor=333333ff --bshlcolor=333333ff --separatorcolor=333333ff --linecolor=333333ff --insidevercolor=333333ff 

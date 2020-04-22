@@ -22,5 +22,6 @@ done
 
 if [ $found = false ]
 then
-	echo "Not a registered configuration file"
+	# Conf file not found
+	exit 1
 fi
