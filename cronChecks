@@ -2,6 +2,6 @@
 
 export DISPLAY=:0.0 
 
-test -z $(xbps-install -Su -n) || /usr/bin/notify-send " Updates are available"
+test -z "$(xbps-install -Su -n)" || /usr/bin/notify-send " Updates are available"
 
-test $(cat /sys/class/power_supply/BAT0/capacity) -lt 40 && /usr/bin/notify-send " Battery Critically Low! $(cat /sys/class/power_supply/BAT0/capacity)% Remaining"
+test -z "$(cat /sys/class/power_supply/BAT0/status | grep "Charging")" && test $(cat /sys/class/power_supply/BAT0/capacity) -lt 20 && /usr/bin/notify-send " Battery Critically Low! $(cat /sys/class/power_supply/BAT0/capacity)% Remaining"
