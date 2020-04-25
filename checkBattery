@@ -14,7 +14,7 @@ generateLevel(){
 	test $charge -lt 70 && level="" && return 0
 	test $charge -lt 80 && level="" && return 0
 	test $charge -lt 90 && level="" && return 0
-	test $charge -lt 99 && level="" && return 0
+	test $charge -lt 101 && level="" && return 0
 
 }
 
