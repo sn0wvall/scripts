@@ -1,0 +1,9 @@
+#!/bin/sh
+
+length="$(echo "10s\n10m\n60m\n2h" | dmenu -p "Timer Length:")"
+
+[ $(echo "$length" | cut -b4) != '' ] && notify-send "Invalid Timer Length!" && exit 2
+
+sleep $length
+
+notify-send " Timer Complete"

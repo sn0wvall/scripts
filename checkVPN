@@ -3,4 +3,4 @@
 connectionName="$(nmcli c show --active | grep -Eo '^[^ ]+' | grep -v NAME | head -1)"
 active="$(nmcli c show --active | grep tun | head -1)"
 
-test -n "$active" && echo " Connected to VPN $connectionName" || echo " Disconnected from VPN"
+test -n "$active" && echo " Connected to VPN $connectionName" || echo " Disconnected from VPN"

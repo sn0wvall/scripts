@@ -6,4 +6,4 @@ if [ "$1" = "raw" ]; then
 	test -n "$active" || exit 1
 fi
 
-test -n "$active" && echo " Connected to network $(nmcli c show --active | grep wifi | awk '{print $1;}')" || echo " Disconnected from network"
+test -n "$active" && echo " Connected to network $(nmcli c show --active | grep wifi | awk '{print $1;}')" || echo " Disconnected from network"
