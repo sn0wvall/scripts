@@ -1,0 +1,14 @@
+#!/bin/sh
+
+case $1 in
+	mem)
+		echo " $(free --giga -h | grep Mem | cut -d " " -f20)"
+	;;
+	cpu)
+		echo " $()"
+	;;
+
+	*)
+		echo " $(free --giga -h | grep Mem | cut -d " " -f20)"
+	;;
+esac

@@ -7,3 +7,4 @@ length="$(echo "10s\n10m\n60m\n2h" | dmenu -p "Timer Length:")"
 sleep $length
 
 notify-send " Timer Complete"
+aplay ~/media/fx/ding.wav

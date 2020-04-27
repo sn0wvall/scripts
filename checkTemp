@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo " $(sensors coretemp-isa-0000 | grep Package | cut -d " " -f5)"

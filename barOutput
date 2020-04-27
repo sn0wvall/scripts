@@ -11,6 +11,9 @@ test "$1" = "verbose" &&
 	echo "$(checkWifi)" &&
 	echo "$(checkVPN)" &&
 	echo &&
+	echo "$(checkUsage)" &&
+	echo "$(checkTemp)" &&
+	echo &&
         echo "$(date +%c)" &&
 	echo &&
        	exit 0  

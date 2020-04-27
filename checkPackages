@@ -5,6 +5,6 @@ export DISPLAY=:0
 /home/beta/.bin/checkWifi raw>/dev/null || exit 1
 
 /usr/bin/notify-send " Syncing Repositories"
-xbps-install -S
+sudo xbps-install -S
 
-test -n "$(xbps-install -Sun)" && /usr/bin/notify-send " Updates are available" || /usr/bin/notify-send " No updates available"
+test -n "$(sudo xbps-install -Sun)" && /usr/bin/notify-send " Updates are available" || /usr/bin/notify-send " No updates available"
