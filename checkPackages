@@ -6,4 +6,4 @@ export DISPLAY=:0
 
 /usr/bin/notify-send " Syncing Repositories"
 
-test -n "$(xbps-install -Mun)" && /usr/bin/notify-send " Updates are available" || /usr/bin/notify-send " No updates available"
+test -n "$(xbps-install -Mun)" && /usr/bin/notify-send " Updates are available" || /usr/bin/notify-send " No updates available"

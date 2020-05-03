@@ -1,0 +1,6 @@
+#!/bin/sh
+
+sleep 1m
+~/.bin/checkPackages
+sleep 5s
+~/.bin/checkRSS
