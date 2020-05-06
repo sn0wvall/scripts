@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ "$1" = "mount" ];then 
+	sudo cryptsetup open $2 $3
+	sudo mount /dev/mapper/$3 /mnt/$3
+elif [ "$1" = "unmount" ]; then 
+	sudo umount /dev/mapper/$2
+	sudo cryptsetup close $2
+else
+	echo "$1 is not a valid command"
+fi
