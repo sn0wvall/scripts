@@ -2,8 +2,6 @@
 
 export DISPLAY=:0
 
-
-
 /home/beta/.bin/checkWifi raw>/dev/null || exit 1
 
 /usr/bin/notify-send " Syncing Repositories"
