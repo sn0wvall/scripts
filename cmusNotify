@@ -2,14 +2,14 @@
 
 if ps -C cmus > /dev/null; then
 
-	artist=`cmus-remote -Q | 
+	artist=$(cmus-remote -Q | 
 			grep --text '^tag artist' | 
 			sed '/^tag artistsort/d' | 
-			awk '{gsub("tag artist ", "");print}'`
-	title=`cmus-remote -Q  | 
+			awk '{gsub("tag artist ", "");print}')
+	title=$(cmus-remote -Q  | 
 			grep --text '^tag title' | 
 			sed -e 's/tag title //' |
-			awk '{gsub("tag title ", "");print}'`
+			awk '{gsub("tag title ", "");print}')
 
 	test -z "$title" && exit 0
 

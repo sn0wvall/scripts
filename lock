@@ -1,3 +1,5 @@
+#!/bin/sh
+
 xsel -bc
 cmus-remote -s
 

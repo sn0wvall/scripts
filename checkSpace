@@ -7,6 +7,6 @@ test "$1" = "v" &&
 	exit 0
  
 
-echo -n  $(df -h --output=avail /home/beta | tail -n 1)
-echo -n " "
-echo -n  $(df -h --output=avail / | tail -n 1)
+printf "  %s" "$(df -h --output=avail /home/beta | tail -n 1)"
+printf " "
+printf "  %s" "$(df -h --output=avail / | tail -n 1)"

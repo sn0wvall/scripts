@@ -17,7 +17,7 @@ do
 		found=true
 		$EDITOR "${namepath[$attempts]}"		
 	fi
-	attempts=$(( $attempts + 1 ))
+	attempts=$(( attempts + 1 ))
 done
 
 if [ $found = false ]

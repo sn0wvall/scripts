@@ -5,16 +5,16 @@ charge="$(cat /sys/class/power_supply/BAT0/capacity)"
 
 generateLevel(){
 
-	test $charge -lt 11 && level="" && return 0
-	test $charge -lt 21 && level="" && return 0
-	test $charge -lt 31 && level="" && return 0
-	test $charge -lt 41 && level="" && return 0
-	test $charge -lt 51 && level="" && return 0
-	test $charge -lt 61 && level="" && return 0
-	test $charge -lt 71 && level="" && return 0
-	test $charge -lt 81 && level="" && return 0
-	test $charge -lt 91 && level="" && return 0
-	test $charge -lt 101 && level="" && return 0
+	test "$charge" -lt 11 && level="" && return 0
+	test "$charge" -lt 21 && level="" && return 0
+	test "$charge" -lt 31 && level="" && return 0
+	test "$charge" -lt 41 && level="" && return 0
+	test "$charge" -lt 51 && level="" && return 0
+	test "$charge" -lt 61 && level="" && return 0
+	test "$charge" -lt 71 && level="" && return 0
+	test "$charge" -lt 81 && level="" && return 0
+	test "$charge" -lt 91 && level="" && return 0
+	test "$charge" -lt 101 && level="" && return 0
 
 }
 
