@@ -1,6 +1,8 @@
 #!/bin/sh
 
-sleep 1m
+sleep 10s
+notify-send "$(/home/beta/docs/foss/toofoo/main.sh)"
+sleep 50s
 ~/.bin/checkPackages
 sleep 5s
 ~/.bin/checkRSS

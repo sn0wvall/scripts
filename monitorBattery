@@ -5,9 +5,10 @@ export DISPLAY=:0.0
 test -z "$(grep "Discharging" /sys/class/power_supply/BAT0/status)" && exit 2
 
 if [ "$(cat /sys/class/power_supply/BAT0/capacity)" -lt 25 ]; then
-	test "$(cat /sys/class/power_supply/BAT0/capacity)" -lt 10 && 
-		/usr/bin/xbacklight -set '50' &
-		/usr/bin/notify-send --urgency=critical " Battery Critically Low! $(cat /sys/class/power_supply/BAT0/capacity)% Remaining. Starting power saving." &&
-			exit 0	
+	if [ "$(cat /sys/class/power_supply/BAT0/capacity)" -lt 10 ];then 
+		/usr/bin/xbacklight -set '50'
+		/usr/bin/notify-send --urgency=critical " Battery Critically Low! $(cat /sys/class/power_supply/BAT0/capacity)% Remaining. Starting power saving."
+		exit 0
+	fi	
 	/usr/bin/notify-send --urgency=critical " Battery Low! $(cat /sys/class/power_supply/BAT0/capacity)% Remaining"
 fi
