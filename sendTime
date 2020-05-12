@@ -1,0 +1,9 @@
+#!/bin/sh
+
+export DISPLAY=:0.0
+time="$(date +%R)"
+
+
+/usr/bin/notify-send " $time"
+
+echo "ran" > /home/beta/ran
