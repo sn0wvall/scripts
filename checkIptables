@@ -1,0 +1,7 @@
+#!/bin/sh
+
+#  
+# 
+active=$(sudo sv status iptables | grep down)
+
+test -z "$active" && echo  Firewall ON || echo  Firewall OFF
