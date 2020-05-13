@@ -2,12 +2,12 @@
 
 echo "SCRIPT MUST BE RUN AS ROOT"
 
-IFS=$'\r\n' GLOBIGNORE='*' command eval  "XYZ=($(cat "$1"))"
+IFS=$'\r\n' GLOBIGNORE='*' command eval  'XYZ=($(cat $1))'
 
 echo "${XYZ[5]}"
 
 for i in "${XYZ[@]}"
 do
-	package=$(echo "$i" | awk '{print $2}')
+	package="$(echo "$i" | awk '{print $2}')"
 	xbps-install -Sy "$package"
 done
