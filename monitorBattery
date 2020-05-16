@@ -2,6 +2,10 @@
 
 export DISPLAY=:0.0 
 
+test -n "$(grep "Charging" /sys/class/power_supply/BAT0/status)" &&
+	test $(xbacklight | cut -d '.' -f1) -lt 100 &&
+	xbacklight = 100
+
 test -z "$(grep "Discharging" /sys/class/power_supply/BAT0/status)" && exit 2
 
 if [ "$(cat /sys/class/power_supply/BAT0/capacity)" -lt 25 ]; then
