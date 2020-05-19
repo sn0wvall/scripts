@@ -21,7 +21,9 @@ generateLevel(){
 generateLevel
 
 if [ -n "$full" ];then
-       	echo " 100%" 
+       	echo " 100%" 
+elif [ "$charge" = "100" ];then
+	echo " $charge%"
 else
 	test "$(cat /sys/class/power_supply/BAT0/status)" = "Discharging" && echo "$level $(acpi -b | grep -E -o '[0-9][0-9]?%')" || echo " $(acpi -b | grep -E -o '[0-9][0-9]?%')" 
 fi
