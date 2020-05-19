@@ -1,7 +1,9 @@
 # Scripts
 
-BASH Scripts I Use
+UNIX Shell and BASH scripts I use
 
 Some of these rely on the scripts folder being included in PATH. For easy usage, you may find this useful.
 
-icomoon is used for icons.
+[Icomoon](https://icomoon.io/) is used for icons.
+
+Feel free to make a PR if you want to add a script.
