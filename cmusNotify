@@ -15,5 +15,5 @@ if ps -C cmus > /dev/null; then
 
 	test -z "$(cmus-remote -Q | grep status | grep playing)" && symbol="" || symbol=""
 	
-	notify-send "$symbol $title" " <i>$artist</i>"
+	dunstify -r 1001 "$symbol $title" " <i>$artist</i>"
 fi
