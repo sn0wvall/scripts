@@ -1,0 +1,21 @@
+#!/bin/sh
+
+time() {
+	echo "%{r}TIME: $(date +%R)"
+}
+
+other() {
+	echo -n "SPA: $(~/.bin/checkSpace) | "
+	echo -n "DEF: $(~/.bin/checkIptables | awk '{ print $3 }') | "
+	echo -n "NET: $(~/.bin/checkWifiVPN) | "
+	echo -n "VPN: $(~/.bin/checkVPN raw) | "
+	echo -n "TMP: $(~/.bin/checkTemp)"
+}
+
+while :; do
+
+	buff=" "
+	buff="${buff} $(other)"
+	buff="${buff} $(time)" 
+	echo $buff
+done

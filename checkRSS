@@ -4,8 +4,8 @@ export DISPLAY=:0
 
 ping -c 2 1.1.1.1>/dev/null || exit 2
 
-ps -aux | grep newsboat && exit 3
+pgrep newsboat && exit 3
 
 /usr/bin/notify-send " Syncing RSS"
 newsboat -x reload
-/usr/bin/notify-send " RSS Feeds Updated"
+/usr/bin/notify-send " RSS Feed Updated"

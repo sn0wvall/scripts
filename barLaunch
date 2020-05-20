@@ -1,0 +1,5 @@
+#!/bin/sh
+
+pgrep lemonbar && pkill lemonbar
+
+~/.bin/lemonOutput| lemonbar -f "WorkSans:size=10" -g 1920x20 -p -B "#ff333333" &

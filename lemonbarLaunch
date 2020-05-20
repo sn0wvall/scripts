@@ -1,3 +1,0 @@
-#!/bin/sh
-
-echo "%{l}%{F#FFFFFF} $(/home/alpha/.bin/lemonbarOutput)" | lemonbar -g 1920x20 -p -b -B "#333333" &
