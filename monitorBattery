@@ -4,7 +4,7 @@ export DISPLAY=:0.0
 
 capacity="$(cat /sys/class/power_supply/BAT0/capacity)"
 
-if [ $capacity -lt 100 ] && [ $capacity -gt 25 ]; then
+if [ $capacity -lt 100 ] && [ $capacity -gt 0 ]; then
 	newLight=$((capacity + 10))
 	echo $newLight
 	xbacklight -set "$newLight"
@@ -19,7 +19,6 @@ test -z "$(grep "Discharging" /sys/class/power_supply/BAT0/status)" && exit 2
 if [ "$capacity" -lt 25 ]; then
 
 	if [ "$capacity" -lt 10 ];then 
-		/usr/bin/xbacklight -set '50'
 		/usr/bin/notify-send --urgency=critical " Battery Critically Low! $capacity% Remaining. Starting power saving."
 		exit 0
 	fi
