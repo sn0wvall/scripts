@@ -3,12 +3,9 @@
 while true; do
 
 	oldStatus=$(checkWifi)
-	oldStatusVPN=$(checkVPN)
 	sleep 5s
 	newStatus=$(checkWifi)
-	newStatusVPN=$(checkVPN)
 
 	test "$oldStatus" != "$newStatus" && notify-send "$(checkWifi)"
-	test "$oldStatusVPN" != "$newStatusVPN" && notify-send "$(checkVPN)"
 	
 done 

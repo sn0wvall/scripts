@@ -1,10 +1,17 @@
 #!/bin/sh
 
 connectionName="$(nmcli c show --active | grep -Eo '^[^ ]+' | grep -v NAME | head -1)"
-active="$(nmcli c show --active | grep tun)"
+active="$(nmcli c show --active | grep vpn)"
+activeNotify="$(nmcli c show --active | grep tun)"
 
 prelimc1=""
 prelimdc1=" DOWN"
+
+test "$1" = "notify" &&
+	test -n "$activeNotify" &&
+	echo "$prelim $connectionName" ||
+	echo "$prelimdc1" &&
+	exit 0
 
 prelimc2=" Connected to VPN" 
 prelimdc2=" Disconnected from VPN"

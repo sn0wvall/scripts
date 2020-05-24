@@ -1,0 +1,11 @@
+#!/bin/sh
+
+export DISPLAY=:0.0
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+export XAUTHORITY=/home/beta/.Xauthority
+
+
+case $1 in
+	here)	sudo -u beta /usr/bin/dunstify -r 2000 " New Device Connected"		;;
+	gone)	sudo -u beta /usr/bin/dunstify -r 2001 " Device Disconnected"		;;
+esac
