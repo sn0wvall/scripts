@@ -5,7 +5,7 @@ export DISPLAY=:0.0
 capacity="$(cat /sys/class/power_supply/BAT0/capacity)"
 
 test "$1" = "ac" && /usr/bin/notify-send " Charging on AC"
-test "$1" = "bat" && /usr/bin/notify-send "$(/home/beta/.bin/checkBattery | awk '{print $1}') On battery power"
+test "$1" = "bat" && /usr/bin/notify-send "$(/home/beta/.bin/checkBattery | awk '{print $1}') On Battery Power"
 
 test -n "$(grep "Charging" /sys/class/power_supply/BAT0/status)" && 
 	test $(xbacklight | cut -d '.' -f1) -lt 101 &&

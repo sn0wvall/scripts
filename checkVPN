@@ -7,11 +7,12 @@ activeNotify="$(nmcli c show --active | grep tun)"
 prelimc1=""
 prelimdc1=" DOWN"
 
-test "$1" = "notify" &&
+if [ "$1" = "notify" ]; then
 	test -n "$activeNotify" &&
-	echo "$prelim $connectionName" ||
+	echo "$prelimc1 $connectionName" ||
 	echo "$prelimdc1" &&
-	exit 0
+	exit 2
+fi
 
 prelimc2=" Connected to VPN" 
 prelimdc2=" Disconnected from VPN"
