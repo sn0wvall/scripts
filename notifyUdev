@@ -10,7 +10,7 @@ test -z "$2" && name="Unnamed" || name="$2"
 case $1 in
 	here)		sudo -u beta /usr/bin/dunstify -r 2000 " Removable Device Connected" " $name"		;;
 	gone)		sudo -u beta /usr/bin/dunstify -r 2001 " Removable Device Disconnected" " $name"	;;
-	hereinput)	sudo -u beta /usr/bin/dunstify -r 2002 " Input Device Connected" " $name"		;;
-	goneinput)	sudo -u beta /usr/bin/dunstify -r 2003 " Input Device Disconnected" " $name"		;;
+	hereinput)	sudo -u beta /usr/bin/dunstify -r 2002 " Input Device Connected" " $name"		;;
+	goneinput)	sudo -u beta /usr/bin/dunstify -r 2003 " Input Device Disconnected" " $name"		;;
 	bright)		sudo -u beta /usr/bin/dunstify -r 2004 " $(xbacklight | cut -d . -f1)";;
 esac

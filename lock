@@ -4,4 +4,4 @@ xsel -bc
 cmus-remote -s
 notify-send "DUNST_COMMAND_PAUSE"
 
-i3lock -n --pass-media-keys -i ~/media/images/bkg/lockBackground.png --insidecolor=00000000 --ringcolor=000000ff --timestr=%H:%M:%S --timecolor=ffffffff --keyhlcolor=333333ff --bshlcolor=333333ff --separatorcolor=333333ff --linecolor=333333ff --insidevercolor=333333ff && notify-send "DUNST_COMMAND_RESUME"
+i3lock -ent --pass-media-keys -i ~/media/images/bkg/lockBackground.png --insidecolor=00000000 --ringcolor=000000ff --keyhlcolor=ffffffff --bshlcolor=ffffffff --separatorcolor=000000ff --linecolor=000000ff --insidevercolor=00000000 --ringvercolor=ffffffff --wrongtext="" --veriftext="" --noinputtext="" && notify-send "DUNST_COMMAND_RESUME"
