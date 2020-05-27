@@ -5,3 +5,5 @@ sleep 10s
 notify-send "$(/home/beta/.apps/toofoo/main.sh)"
 sleep 50s
 ~/.bin/checkPackages
+sleep 3s
+~/.bin/checkRSS

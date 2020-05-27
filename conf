@@ -1,14 +1,30 @@
 #!/bin/bash
 
-#Users should edit the following three variables
+shortname=(dunst vim rifle ranger colours urxvt bspwm sxhkd st dwm zsh cmus newsboat zathura)
 
-
-shortname=(polybar modules user_modules i3 dunst vim rifle ranger colours urxvt i3blocks bspwm sxhkd st dwm zsh)
 #THIS MUST BE IN THE SAME ORDER AS THE SHORTNAME ARRAY
-namepath=(~/.config/polybar/config ~/.config/polybar/modules.ini ~/.config/polybar/user_modules.ini ~/.config/i3/config ~/.config/dunst/dunstrc ~/.vim/vimrc ~/.config/ranger/rifle.conf ~/.config/ranger/rc.conf ~/.config/polybar/colors.ini ~/.Xresources ~/.config/i3blocks/config ~/.config/bspwm/bspwmrc ~/.config/sxhkd/sxhkdrc ~/.apps/st-0.8.2/config.h ~/.apps/dwm-6.2/config.h ~/.config/zsh/.zshrc)
+
+namepath=(\
+       	~/.config/dunst/dunstrc\
+       	~/.vim/vimrc\
+       	~/.config/ranger/rifle.conf\
+       	~/.config/ranger/rc.conf\
+       	~/.config/polybar/colors.ini\
+       	~/.Xresources\
+       	~/.config/bspwm/bspwmrc\
+       	~/.config/sxhkd/sxhkdrc\
+       	~/.apps/st-0.8.2/config.h\
+       	~/.apps/dwm-6.2/config.h\
+       	~/.config/zsh/.zshrc\
+	~/.config/cmus/rc\
+	~/.config/newsboat/config\
+	~/.config/zathura/zathurarc\
+)
 
 attempts=0
 found=false
+
+test -z $EDITOR && EDITOR=nano
 
 while [ "$attempts" -le "${#namepath[@]}" ]
 do
@@ -20,8 +36,4 @@ do
 	attempts=$(( attempts + 1 ))
 done
 
-if [ $found = false ]
-then
-	# Conf file not found
-	exit 1
-fi
+test $found = false && exit 1

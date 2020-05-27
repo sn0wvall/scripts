@@ -2,7 +2,7 @@
 
 export DISPLAY=:0
 
-ping -c 2 1.1.1.1 || exit 1
+ping -c 2 1.1.1.1>/dev/null || exit 1
 
 /usr/bin/notify-send " Syncing Repositories"
 
