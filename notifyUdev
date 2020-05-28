@@ -6,7 +6,6 @@ export XAUTHORITY=/home/beta/.Xauthority
 
 test -z "$2" && name="Unnamed" || name="$2"
 
-
 case $1 in
 	here)		sudo -u beta /usr/bin/dunstify -r 2000 " Removable Device Connected" " $name"		;;
 	gone)		sudo -u beta /usr/bin/dunstify -r 2001 " Removable Device Disconnected" " $name"	;;
@@ -14,3 +13,5 @@ case $1 in
 	goneinput)	sudo -u beta /usr/bin/dunstify -r 2003 " Input Device Disconnected" " $name"		;;
 	full)		sudo -u beta /usr/bin/dunstify -r 2004 " Battery Fully Charged";;
 esac
+
+/home/beta/.bin/devHandler $1 $2
