@@ -1,4 +1,3 @@
 #!/bin/sh
 
-cmus-remote -s
-
+~/.bin/monitorBattery

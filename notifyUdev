@@ -14,4 +14,6 @@ case $1 in
 	full)		sudo -u beta /usr/bin/dunstify -r 2004 " Battery Fully Charged";;
 esac
 
-/home/beta/.bin/devHandler $1 $2
+test "$4" = "crypto_LUKS" && sudo -u beta /usr/bin/dunstify -r 2006 " Crypt Device Detected"
+
+/home/beta/.bin/devHandler $1 $2 $3 $4
