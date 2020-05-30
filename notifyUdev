@@ -1,19 +1,19 @@
 #!/bin/sh
 
-export DISPLAY=:0.0
 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+export DISPLAY=:0
 export XAUTHORITY=/home/beta/.Xauthority
 
 test -z "$2" && name="Unnamed" || name="$2"
 
 case $1 in
-	here)		sudo -u beta /usr/bin/dunstify -r 2000 " Removable Device Connected" " $name"		;;
-	gone)		sudo -u beta /usr/bin/dunstify -r 2001 " Removable Device Disconnected" " $name"	;;
-	hereinput)	sudo -u beta /usr/bin/dunstify -r 2002 " Input Device Connected" " $name"		;;
-	goneinput)	sudo -u beta /usr/bin/dunstify -r 2003 " Input Device Disconnected" " $name"		;;
-	full)		sudo -u beta /usr/bin/dunstify -r 2004 " Battery Fully Charged";;
+	here)		dunstify -r 2000 " Removable Device Connected" " $name"	;;
+	gone)		dunstify -r 2001 " Removable Device Disconnected" " $name"	;;
+	hereinput)	dunstify -r 2002 " Input Device Connected" " $name"		;;
+	goneinput)	dunstify -r 2003 " Input Device Disconnected" " $name"	;;
+	full)		dunstify -r 2004 " Battery Fully Charged"			;;
 esac
 
-test "$4" = "crypto_LUKS" && sudo -u beta /usr/bin/dunstify -r 2006 " Crypt Device Detected"
+test "$4" = "crypto_LUKS" && dunstify -r 2006 " Crypt Device Detected"
 
 /home/beta/.bin/devHandler $1 $2 $3 $4

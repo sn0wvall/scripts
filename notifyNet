@@ -1,8 +1,10 @@
 #!/bin/sh
 
-export DISPLAY=:0.0
+export DISPLAY=:0.0/
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+export XAUTHORITY=/home/beta/.Xauthority
 
 case $1 in
-	vpnhere)	sudo -u beta /usr/bin/dunstify -r 3000 " VPN $(/home/beta/.bin/checkVPN raw | awk '{ print $2  }') Connected" 	;;
-	vpngone)	sudo -u beta /usr/bin/dunstify -r 3001 " VPN Disconnected"		;;
+	vpnhere)	dunstify -r 3000 " VPN $(/home/beta/.bin/checkVPN raw | awk '{ print $2  }') Connected" 	;;
+	vpngone)	dunstify -r 3001 " VPN Disconnected"		;;
 esac

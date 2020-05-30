@@ -1,10 +1,11 @@
 #!/bin/sh
 
-export DISPLAY=:0.0 
+export DISPLAY=:0 
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
 
 capacity="$(cat /sys/class/power_supply/BAT0/capacity)"
 
-test "$1" = "ac" && /usr/bin/notify-send "🔌 Charging on AC"
+test "$1" = "ac" && /usr/bin/notify-send " Charging on AC"
 test "$1" = "bat" && /usr/bin/notify-send "$(/home/beta/.bin/checkBattery | awk '{print $1}') On Battery Power"
 
 test -n "$(grep "Charging" /sys/class/power_supply/BAT0/status)" && 

@@ -1,3 +1,6 @@
 #!/bin/sh
+
+export DISPLAY=:0.0
+
 cmus-remote -s
-i3lock -et --pass-media-keys -i ~/media/images/bkg/lockBackground.png --insidecolor=00000000 --ringcolor=000000ff --keyhlcolor=ffffffff --bshlcolor=ffffffff --separatorcolor=000000ff --linecolor=000000ff --insidevercolor=00000000 --ringvercolor=0099ffff --wrongtext="" --veriftext="" --noinputtext="" --insidewrongcolor=00000000 --ringwrongcolor=900000ff
+i3lock -et --pass-media-keys -i ~/media/images/bkg/lockBackground.png --insidecolor=00000000 --ringcolor=000000ff --keyhlcolor=ffffffff --bshlcolor=ffffffff --separatorcolor=000000ff --linecolor=000000ff --insidevercolor=00000000 --ringvercolor=0099ffff --wrongtext='' --veriftext='' --noinputtext='' --insidewrongcolor=00000000 --ringwrongcolor=900000ff

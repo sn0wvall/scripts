@@ -9,5 +9,5 @@ echo "${XYZ[5]}"
 for i in "${XYZ[@]}"
 do
 	package="$(echo "$i" | awk '{print $2}')"
-	xbps-install -Sy "$package"
+	pacman -S "$package"
 done

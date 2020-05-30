@@ -36,4 +36,4 @@ do
 	attempts=$(( attempts + 1 ))
 done
 
-test $found = false && exit 1
+test $found = true || exit 1
