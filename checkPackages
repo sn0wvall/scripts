@@ -6,6 +6,6 @@ ping -c 2 1.1.1.1>/dev/null || exit 1
 
 /usr/bin/notify-send " Syncing Repositories"
 
-packages="$(xbps-install -Mun | awk '{print $1}' | sed '1s/^/\n\n/')"
+packages="$(pacman -Qu)"
 
-test -n "$packages" && /usr/bin/notify-send " Updates are available: $packages" || /usr/bin/notify-send " No updates available"
+test -n "$packages" && /usr/bin/notify-send " Updates are available:" "\n$packages" || /usr/bin/notify-send " No updates available"
