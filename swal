@@ -1,0 +1,12 @@
+#!/bin/bash                                                                                 
+
+currNode=$(bspc query -N -n focused)
+destPid=$!
+$@ &
+WATCH=$(bspc subscribe -c 1 node_add)
+newNode=${WATCH%% *}
+bspc node -s $currNode
+bspc node $currNode --flag hidden=on
+wait $destPid
+bspc node $currNode --flag hidden=off
+bspc node $currNode --focus

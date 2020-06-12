@@ -8,8 +8,6 @@ ping -c 2 1.1.1.1>/dev/null || exit 1
 
 /usr/bin/notify-send " Syncing Repositories"
 
-sudo pacman -Syy &>/dev/null
+active="$(checkupdates)"
 
-packages="$(pacman -Qu)"
-
-test -n "$packages" && /usr/bin/notify-send " Updates are available:" "\n$packages" || /usr/bin/notify-send " No updates available"
+test -n "$active" && /usr/bin/notify-send " Updates are available:" "\n$active" || /usr/bin/notify-send " No updates available"

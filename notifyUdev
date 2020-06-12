@@ -16,4 +16,4 @@ esac
 
 test "$4" = "crypto_LUKS" && dunstify -r 2006 " Crypt Device Detected"
 
-/home/beta/.bin/devHandler $1 $2 $3 $4
+sudo -u beta /home/beta/.bin/devHandler $1 $2 $3 $4
