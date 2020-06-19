@@ -2,12 +2,13 @@
 
 term="$(echo " " | dmenu -fn "Source Code Pro" -p "Search Term")"
 
+test -n "$term" && notify-send "❌ No Input Given" && exit 2 
+
 resultPerseus=$(curl -s "https://www.perseus.tufts.edu/hopper/morph?l=$term&la=la" | sed -n "/<span class=\"lemma_definition\">/,/<\/span>/p" | grep -v span)
 
-resultWiktionary="$(wget "https://en.wiktionary.org/w/index.php?title=$term&printable=yes" 2>/dev/null -O - | w3m -dump -no-graph -T text/html | gawk '($1=="Latin"){flag=1} ($1=="Retrieved"&&$2=="from"||$1~/-----/){flag=0} {if (flag==1) print $0} ' | egrep '^ *[1-9]\.' | grep -v "\[" | grep -v ")")"
-
+resultWiktionary="$(wget "https://en.wiktionary.org/w/index.php?title=$term&printable=yes" 2>/dev/null -O - | w3m -dump -no-graph -T text/html | gawk '($1=="Latin"){flag=1} ($1=="Retrieved"&&$2=="from"||$1~/-----/){flag=0} {if (flag==1) print $0} ' | egrep '^ *[1-9]\.' | grep -v "\[" | grep -v "[1-9])" | grep -v "\^")"
 test -z "$resultWiktionary" && resultWiktionary="No Results"
 
-result="Wiktionary\n\n$resultWiktionary"
+result="📖 Wiktionary\n\n$resultWiktionary"
 
-echo "$result"
+echo "$result" | tr -d "[1-9]" | tr -d "\." | sed "s/^[ \t]*//"

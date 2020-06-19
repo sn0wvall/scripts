@@ -4,7 +4,9 @@ length="$(printf "10s\n10m\n60m\n2h" | dmenu -p "Timer Length:")"
 
 [ "$(echo "$length" | cut -b4)" != '' ] && notify-send "Invalid Timer Length!" && exit 2
 
+notify-send "⏳ Timer Started For $length"
+
 sleep "$length"
 
-notify-send " Timer Complete"
+notify-send "⌛ Timer Complete After $length"
 aplay ~/media/fx/ding.wav

@@ -1,0 +1,13 @@
+#!/bin/env bash
+
+currentGaps="$(bspc config window_gap)"
+
+!= 
+
+((newGapsUp=$currentGaps+5))
+((newGapsDown=$currentGaps-5))
+
+case $1 in
+	up)	bspc config window_gap $newGapsUp		;;
+	down)	bspc config window_gap $newGapsDown		;;
+esac
