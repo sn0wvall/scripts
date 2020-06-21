@@ -1,0 +1,13 @@
+#!/bin/sh
+
+active="$(amixer | grep "\[on\]" | wc -l)" 
+
+case $active in
+	2)	pactl set-sink-mute 0 0
+		dunstify -r 1003 " Unmuted"
+			
+	;;
+	4)	pactl set-sink-mute 0 1
+		dunstify -r 1003 " Muted"
+	;;
+esac
