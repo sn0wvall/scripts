@@ -1,7 +1,13 @@
 #!/bin/sh
 
-export DISPLAY=:0.0
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+export DISPLAY=:0
+export XAUTHORITY=/home/beta/.Xauthority
 
-cmus-remote -s
-playerctl stop -a
-i3lock -et --pass-media-keys -i ~/media/images/bkg/lockBackground.png --insidecolor=00000000 --ringcolor=000000ff --keyhlcolor=ffffffff --bshlcolor=ffffffff --separatorcolor=000000ff --linecolor=000000ff --insidevercolor=00000000 --ringvercolor=0099ffff --wrongtext='' --veriftext='' --noinputtext='' --insidewrongcolor=00000000 --ringwrongcolor=900000ff
+sudo -u beta xsel -bc
+nmcli c down Home
+cmus-remote -U
+playerctl pause -a 
+notify-send "DUNST_COMMAND_PAUSE"
+
+i3lock -ent --pass-media-keys -i ~/media/images/bkg/lockBackground.png --insidecolor=00000000 --ringcolor=000000ff --keyhlcolor=ffffffff --bshlcolor=ffffffff --separatorcolor=000000ff --linecolor=000000ff --insidevercolor=00000000 --ringvercolor=0099ffff --wrongtext="" --veriftext="" --noinputtext="" --insidewrongcolor=00000000 --ringwrongcolor=900000ff && notify-send "DUNST_COMMAND_RESUME"

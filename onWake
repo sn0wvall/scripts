@@ -1,3 +1,4 @@
 #!/bin/sh
 
+nmcli c up Home
 ~/.bin/monitorBattery

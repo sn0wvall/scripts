@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export DISPLAY=:0.0
+
 xsel -bc
 cmus-remote -U
 playerctl pause -a 
