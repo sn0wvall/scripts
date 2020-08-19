@@ -1,9 +1,9 @@
 #!/bin/sh
 
+notify-send "Yo! Don't forget to start your dmesg monitoring, fool!"
+
 test -z "$(cd ~/.configbackup/ && git status --porcelain --ignore-submodules)" || notify-send " Config Backup Dirty"	
-sleep 10s
-notify-send "$(/home/beta/.apps/toofoo/main.sh)"
-sleep 50s
+sleep 30s
 ~/.bin/checkPackages
 sleep 3s
 ~/.bin/checkRSS

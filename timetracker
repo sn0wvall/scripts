@@ -1,0 +1,12 @@
+#!/bin/bash
+
+date=$(date +%d/%m/%y | sed 's/\//./g')
+destFile="/home/beta/docs/timer/$date"
+
+test -e "$destFile" && notify-send "oh yeah" || touch "$destFile"
+
+IFS=$'\r\n' GLOBIGNORE='*' command eval "fileTime=($(cat $destFile))"
+
+test -z $fileTime && echo 0 >$destFile 
+
+# Unfinished lowkey doe
