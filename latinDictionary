@@ -8,6 +8,7 @@ resultPerseus=$(curl -s "https://www.perseus.tufts.edu/hopper/morph?l=$term&la=l
 
 resultWiktionary="$(wget "https://en.wiktionary.org/w/index.php?title=$term&printable=yes" 2>/dev/null -O - | w3m -dump -no-graph -T text/html | gawk '($1=="Latin"){flag=1} ($1=="Retrieved"&&$2=="from"||$1~/-----/){flag=0} {if (flag==1) print $0} ' | egrep '^ *[1-9]\.' | grep -v "\[" | grep -v "[1-9])" | grep -v "\^")"
 test -z "$resultWiktionary" && resultWiktionary="No Results"
+test -z "$resultPerseus" && resultPerseus="No Results"
 
 result="📖 Wiktionary\n\n$resultWiktionary\n\n🐎 Perseus\n\n$resultPerseus"
-echo "$result" | tr -d "[1-9]" | tr -d "\." | sed "s/^[ \t]*//"
+printf "$result" | tr -d "[1-9]" | tr -d "\." | sed "s/^[ \t]*//"

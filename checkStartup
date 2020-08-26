@@ -1,6 +1,6 @@
 #!/bin/sh
 
-notify-send "Yo! Don't forget to start your dmesg monitoring, fool!"
+notify-send "❕Yo! Don't forget to start your dmesg monitoring, fool!"
 
 test -z "$(cd ~/.configbackup/ && git status --porcelain --ignore-submodules)" || notify-send " Config Backup Dirty"	
 sleep 30s

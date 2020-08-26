@@ -4,8 +4,8 @@ connectionName="$(nmcli c show --active | grep -Eo '^[^ ]+' | grep -v NAME | hea
 active="$(nmcli c show --active | grep vpn)"
 activeNotify="$(nmcli c show --active | grep tun)"
 
-prelimc1=""
-prelimdc1=" DOWN"
+prelimc1="" 
+prelimdc1=" DOWN"
 
 if [ "$1" = "notify" ]; then
 	test -n "$activeNotify" &&
