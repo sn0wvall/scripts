@@ -8,4 +8,4 @@ newNodes="$(bspc query -N)"
 new="$(diff <(echo "$oldNodes") <(echo "$newNodes") | awk '{print $2}')"
 
 new1="$(echo $newRaw | awk '{print $1}')"
-bspc node $new1 -d ^8
+bspc node $new1 -d ^7
