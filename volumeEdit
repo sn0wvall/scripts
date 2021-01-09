@@ -3,11 +3,11 @@
 
 case $1 in
 	up)
-		amixer sset Master 5%+
+		amixer sset Master 1%+
 		#aplay ~/media/fx/ding.wav
 	;;
 	down)
-		amixer sset Master 5%-
+		amixer sset Master 1%-
 		#aplay ~/media/fx/ding.wav
 	;;
 esac
