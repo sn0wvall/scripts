@@ -9,5 +9,6 @@ test $(echo $changeInt | grep "+") && changeInt="<span color='#33cc33'>$changeIn
 
 test $(echo $percentage | grep "+") && percentage="<span color='#33cc33'>$percentage</span>" || percentage="<span color='#ff3300'>$percentage</span>"
 
+echo "$ $(curl -s rate.sx | grep XLM | cut -d " " -f9 | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g")"
 echo "$changeInt"
 echo "$percentage"
