@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# XLM Lumens
+priceDataRawXLM=$(curl -s https://rate.sx/xlm)
+priceDataSplitXLM=$(echo $priceDataRawXLM | cut -d "/" -f9)
+percentageXLM=$(echo $priceDataSplitXLM | cut -d "(" -f2 | cut -d ")" -f1 | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g")
+#changeIntXLM=$(echo $priceDataSplitXLM | cut -d " " -f2 | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g")
+#test $(echo $changeIntXLM | grep "+") && changeIntXLM="<span color='#33cc33'>$changeIntXLM</span>" || changeIntXLM="<span color='#ff3300'>$changeIntXLM</span>"
+
+test $(echo $percentageXLM | grep "+") && percentageXLM="<span color='#33cc33'>$percentageXLM</span>" || percentageXLM="<span color='#ff3300'>$percentageXLM</span>"
+
+#BTC Bitcoin
+priceDataRawBTC=$(curl -s https://rate.sx/btc)
+priceDataSplitBTC=$(echo $priceDataRawBTC | cut -d "/" -f9)
+percentageBTC=$(echo $priceDataSplitBTC | cut -d "(" -f2 | cut -d ")" -f1 | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g")
+
+test $(echo $percentageBTC | grep "+") && percentageBTC="<span color='#33cc33'>$percentageBTC</span>" || percentageBTC="<span color='#ff3300'>$percentageBTC</span>"
+
+echo "⭐ Stellar XLM"
+echo "$percentageXLM"
+echo ""
+echo "💰 Bitcoin BTC"
+echo "$percentageBTC"
