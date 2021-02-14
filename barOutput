@@ -32,4 +32,4 @@ test "$1" = "verbose" &&
 
 # Simple Output
 
-echo "$(checkSpace) | $(checkBattery) | $(checkWifi raw) | $(checkVPN notify) |  $(date +%R:%S)"
+echo "$(checkSpace) | $(checkBattery) | $(checkWifi raw) |  $(date +%R:%S)"

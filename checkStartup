@@ -2,7 +2,7 @@
 
 test -z "$(cd ~/.configbackup/ && git status --porcelain --ignore-submodules)" || notify-send " Config Backup Dirty"	
 sleep 30s
-notify-send "$(~/.bin/riverwarnings)"
+#notify-send "$(~/.bin/riverwarnings)"
 sleep 10s
 ~/.bin/checkPackages
 sleep 3s
