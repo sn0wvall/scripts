@@ -6,6 +6,6 @@ test "$1" = "v" &&
 	echo  " $(df -H --output=target,avail,pcent /boot/efi | tail -n 1)" &&
 	exit 0
 
-echo -n   $(df -h --output=avail /home/beta | tail -n 1)
+echo -n 🏢 $(df -h --output=avail /home/beta | tail -n 1)
 echo -n " "
-echo -n   $(df -h --output=avail / | tail -n 1)
+echo -n 💽  $(df -h --output=avail / | tail -n 1)

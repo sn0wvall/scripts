@@ -1,0 +1,3 @@
+#!/bin/sh
+
+vdirsyncer sync && notify-send "📅 Calendars Synced Successfully" || notify-send "❌ Calendar Sync Failed"

@@ -10,5 +10,5 @@ resultWiktionary="$(wget "https://en.wiktionary.org/w/index.php?title=$term&prin
 test -z "$resultWiktionary" && resultWiktionary="No Results"
 test -z "$resultPerseus" && resultPerseus="No Results"
 
-result="📖 Wiktionary\n\n$resultWiktionary\n\n🐎 Perseus\n\n$resultPerseus"
+result="📖 Wiktionary\n\n$resultWiktionary\n\n🏛️ Perseus\n\n$resultPerseus"
 printf "$result" | tr -d "[1-9]" | tr -d "\." | sed "s/^[ \t]*//"

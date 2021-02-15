@@ -21,7 +21,7 @@ generateLevel(){
 generateLevel
 
 if [ -n "$full" ];then
-       	echo " 100%" 
+       	echo "⚡100%" 
 elif [ "$charge" = "100" ];then
 	echo " $charge%"
 else

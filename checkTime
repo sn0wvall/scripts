@@ -1,0 +1,21 @@
+#!/bin/sh
+
+time="$(date +%R:%S)"
+timeTrimmed="$(echo $time | cut -d':' -f1)"
+
+case $timeTrimmed in
+	01|13)  timeSymbol=🕐		;;
+	02|14) 	timeSymbol=🕑		;;
+	03|15) 	timeSymbol=🕒		;;
+	04|16)	timeSymbol=🕓		;;
+	05|17)	timeSymbol=🕔		;;
+	06|18)	timeSymbol=🕕		;;
+	07|19)	timeSymbol=🕖		;;
+	08|20)	timeSymbol=🕒		;;
+	09|21)	timeSymbol=🕘		;;
+	10|22)	timeSymbol=🕙		;;
+	11|23)	timeSymbol=🕚		;;
+	12|00)	timeSymbol=🕛		;;
+esac
+
+echo "$timeSymbol $time"

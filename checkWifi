@@ -1,4 +1,5 @@
 #!/bin/sh
+# 
 
 full=$(nmcli | grep -v -E 'interface|p2p' | grep 'wlp58s0' | sed 's/wlp58s0: //g')
 status=$(nmcli | grep -v -E 'interface|p2p' | grep 'wlp58s0' | sed 's/wlp58s0: //g' | cut -d' ' -f1)
@@ -6,14 +7,14 @@ network=$(nmcli | grep -v -E 'interface|p2p' | grep 'wlp58s0' | sed 's/wlp58s0: 
 
 if [ "$1" = "raw" ]; then
 	case $status in
-		connected) echo " $network"	;;
-		disconnected) echo " DOWN"	;;
-		connecting) echo " CONNECTING" ;; 
+		connected) echo "🌐 $network"	;;
+		disconnected) echo "🔴 DOWN"	;;
+		connecting) echo "🟡 CONNECTING" ;; 
 	esac
 	exit
 fi
 
 case $status in
-	connected) echo " Connected to $network"		;;
-	disconnected) echo " Disconnected from Network"	;;
+	connected) echo "🌐 Connected to $network"		;;
+	disconnected) echo "🔴 Disconnected from Network"	;;
 esac
