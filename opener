@@ -1,0 +1,17 @@
+#!/bin/sh
+
+fileinfo="$(file --mime-type -b $1)"
+
+echo $fileinfo
+
+case $fileinfo in
+	application/pdf) toolOpen="zathura";;
+	text/plain) toolOpen="st -e vim";;
+	text/x-tex) toolOpen="st -e vim";;
+	application/vnd.openxmlformats-officedocument.wordprocessingml.document) toolOpen="libreoffice";;
+	*) echo "tool not found" && toolOpen="fail" ;;
+esac
+
+test "$toolOpen" = "fail" && exit 1
+
+$toolOpen $1 &>/dev/null &
