@@ -6,8 +6,8 @@ export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
 
 ping -c 2 1.1.1.1>/dev/null || exit 1
 
-/usr/bin/notify-send " Syncing Repositories"
+/usr/bin/notify-send "📥 Syncing Repositories"
 
 active="$(checkupdates)"
 
-test -n "$active" && /usr/bin/notify-send " Updates are available:" "\n$active" || /usr/bin/notify-send " No updates available"
+test -n "$active" && /usr/bin/notify-send "📬 Updates are available:" "\n$active" || /usr/bin/notify-send "📪 No updates available"

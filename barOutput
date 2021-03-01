@@ -32,4 +32,4 @@ test "$1" = "verbose" &&
 
 # Simple Output
 
-echo "$(checkSpace) | $(checkBattery) | $(checkWifi raw) | $(checkTime)"
+echo "$(checkSpace) | $(checkBattery) | $(checkWifi raw) | $(checkTime) | 🔊 $(amixer | grep "\[on\]" | cut -d " " -f 7 | head -n 1 | sed 's/\[//g' | sed 's/\]//g')"

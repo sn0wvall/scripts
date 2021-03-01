@@ -1,0 +1,8 @@
+#!/bin/sh
+
+v4l2-ctl --set-ctrl saturation=66
+v4l2-ctl --set-ctrl sharpness=7
+v4l2-ctl --set-ctrl power_line_frequency=0
+v4l2-ctl --set-ctrl exposure_auto=3
+v4l2-ctl --set-ctrl backlight_compensation=3
+v4l2-ctl --set-ctrl brightness=3

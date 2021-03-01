@@ -6,6 +6,6 @@ ping -c 2 1.1.1.1>/dev/null || exit 2
 
 pgrep newsboat && exit 3
 
-/usr/bin/notify-send " Syncing RSS Feeds"
+/usr/bin/notify-send "📥 Syncing RSS Feeds"
 newsboat -x reload
 /usr/bin/notify-send "📰 RSS Feeds Updated"

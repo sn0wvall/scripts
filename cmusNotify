@@ -1,5 +1,9 @@
 #!/bin/sh
 
+#	test -z "$(cmus-remote -Q | grep status | grep playing)" && symbol="" || symbol=""
+	
+#	dunstify -r 1001 "$symbol $title" " <i>$artist</i>"
+
 if ps -C cmus > /dev/null; then
 
 	artist=$(cmus-remote -Q | 

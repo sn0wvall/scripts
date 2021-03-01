@@ -12,6 +12,10 @@ case $1 in
 	hereinput)	dunstify -r 2002 " Input Device Connected" " $name"		;;
 	goneinput)	dunstify -r 2003 " Input Device Disconnected" " $name"	;;
 	full)		dunstify -r 2004 " Battery Fully Charged"			;;
+	heremonitor)	dunstify -r 2007 "🖥 Monitor Connected" 			;;	
+	gonemonitor)	dunstify -r 2008 "🖥 Monitor Disconnected"			;;
+	herepci)	dunstify -r 2009 "🚠 PCI Device Connected" "$name"		;;	
+	gonepci)	dunstify -r 2010 "🚠 PCI Device Disconnected" "$name"		;;
 esac
 
 test "$4" = "crypto_LUKS" && dunstify -r 2006 " Crypt Device Detected"
