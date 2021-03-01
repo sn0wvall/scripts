@@ -15,14 +15,18 @@ case $fileinfo in
 	*) toolOpen="fail" ;;
 esac
 
+if [ $(echo "$pathInput" | grep "^https://") ]
+then
+	toolOpen="firefox"
+fi
+
 if [ $(echo "$pathInput" | grep "https://www.youtube.com") ] || [ $(echo "$pathInput" | grep "https://youtube.com") ]
 then
-	echo "here"
 	toolOpen="mpv"
 fi
 
 echo "$toolOpen"
 test -n "$toolOpenFed" && toolOpen="$toolOpenFed"
-test "$toolOpen" = "fail" && exit 1
+test "$toolOpen" = "fail" && notify-send "❌ Could not find program to open with" "$pathInput" && exit 1
 
 $toolOpen "$pathInput" &>/dev/null &

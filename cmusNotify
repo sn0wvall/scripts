@@ -1,9 +1,5 @@
 #!/bin/sh
 
-#	test -z "$(cmus-remote -Q | grep status | grep playing)" && symbol="" || symbol=""
-	
-#	dunstify -r 1001 "$symbol $title" " <i>$artist</i>"
-
 if ps -C cmus > /dev/null; then
 
 	artist=$(cmus-remote -Q | 
@@ -15,9 +11,14 @@ if ps -C cmus > /dev/null; then
 			sed -e 's/tag title //' |
 			awk '{gsub("tag title ", "");print}')
 
+	duration=$(cmus-remote -Q  | 
+			grep --text '^duration' | 
+			sed -e 's/duration //' |
+			awk '{gsub("tag title ", "");print}')
+
 	test -z "$title" && exit 0
 
 	test -z "$(cmus-remote -Q | grep status | grep playing)" && symbol="" || symbol=""
 	
-	dunstify -r 1001 "$symbol $title" " <i>$artist</i>"
+	dunstify -r 1001 "$symbol $title" " <i>$artist</i> ($(date -d@$duration -u +%M:%S))"
 fi
