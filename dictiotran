@@ -1,0 +1,44 @@
+#!/bin/sh
+
+dictSelected="$(printf "Latin -> English\nEnglish -> French\nFrench -> English\nEnglish Dictionary\nEnglish Thesaurus" | dmenu -i)"
+term="$(printf "" | dmenu -i -p "Search Term ")"
+printf '\033[?7l'
+case $dictSelected in
+	"Latin -> English")
+		lResultPerseus=$(curl -s "https://www.perseus.tufts.edu/hopper/morph?l=$term&la=la" | sed -n "/<span class=\"lemma_definition\">/,/<\/span>/p" | grep -v span | sed 's/^[\t]*//')
+		lResultWiktionary="$(wget "https://en.wiktionary.org/w/index.php?title=$term&printable=yes" 2>/dev/null -O - | w3m -dump -no-graph -T text/html | gawk '($1=="Latin"){flag=1} ($1=="Retrieved"&&$2=="from"||$1~/-----/){flag=0} {if (flag==1) print $0} ' | egrep '^ *[1-9]\.' | grep -v "\[" | grep -v "[1-9])" | grep -v "\^")"
+		
+		test -z "$lResultWiktionary" && lResultWiktionary="No Results"
+		test -z "$lResultPerseus" && lResultPerseus="No Results"
+
+		result="📖 Wiktionary\n\n$lResultWiktionary\n\n🏛️ Perseus\n\n$lResultPerseus"
+	;;	
+	"French -> English")
+		fResultWiktionary=$(wget "https://en.wiktionary.org/w/index.php?title=$term&printable=yes" 2>/dev/null -O - | w3m -dump -no-graph -T text/html | gawk '($1=="French"){flag=1} ($1=="Retrieved"&&$2=="from"||$1~/-----/){flag=0} {if (flag==1) print $0} ' | egrep '^ *[1-9]\.' | grep -v "\[" | grep -v "[1-9])" | grep -v "\^" | sed 's/1/\n1/g')
+	
+		test -z "$fResultWiktionary" && fResultWiktionary="No Results"
+		result="📖 Wiktionary\n$fResultWiktionary" 
+	;;
+	"English -> French")
+		efResultWiktionary=$(wget "https://fr.wiktionary.org/w/index.php?title=$term&printable=yes" 2>/dev/null -O - | w3m -dump -no-graph -T text/html | gawk '($1=="Anglais"){flag=1} ($1=="Retrieved"&&$2=="from"||$1~/-----/){flag=0} {if (flag==1) print $0} ' | egrep '^ *[1-9]\.' | grep -v "\[" | grep -v "[1-9])" | grep -v "\^" | sed 's/1/\n1/g')
+
+		test -z "$efResultWiktionary" && efResultWiktionary="No Results"
+		result="📖 Wiktionary\n$efResultWiktionary" 
+	;;
+	"English Dictionary")
+		eResultWiktionary=$(wget "https://en.wiktionary.org/w/index.php?title=$term&printable=yes" 2>/dev/null -O - | w3m -dump -no-graph -T text/html | gawk '($1=="English"){flag=1} ($1=="Retrieved"&&$2=="from"||$1~/-----/){flag=0} {if (flag==1) print $0} ' | awk -F'[0-9]' 'NF == 1 {LAST = LAST " " $0; $0 = ""}; LAST {print LAST}; {LAST = $0} END {print LAST}' | egrep '^ *[1-9]\.' | sed 's/  //g' | sed 's/^ //g' | sed 's/1/\n1/g')
+
+		test -z "$eResultWiktionary" && eResultWiktionary="No Results"
+		result="📖 Wiktionary\n$eResultWiktionary" 
+	;;
+	"English Thesaurus")
+		tResultWiktionary=$(wget "https://www.wikithesaurus.org/english/$term" 2>/dev/null -O - | w3m -dump -no-graph -T text/html | sed '/^$/d' | grep -v "WikiThesaurus.org" | grep -v "Wiki Thesaurus Search" | grep -v "\[SUBMIT\]" |  sed -e 's/^[ \t]*//')
+
+		test -z "$tResultWiktionary" && tResultWiktionary="No Results"
+		result="📖 WikiThesaurus\n\n$tResultWiktionary" 
+	;;
+	*) notify-send "❌ Invalid Dictionary Selected" ;;
+esac
+
+notify-send "$(printf "$result")"
+printf '\033[?7h'

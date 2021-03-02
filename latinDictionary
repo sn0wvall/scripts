@@ -1,6 +1,6 @@
 #!/bin/sh
 
-term="$(echo " " | dmenu -fn "Source Code Pro" -p "Search Term")"
+term="$(echo " " | dmenu -p "Search Term")"
 
 test -z "$term" && notify-send "❌ No Input Given" && exit 2 
 

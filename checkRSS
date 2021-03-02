@@ -8,4 +8,4 @@ pgrep newsboat && exit 3
 
 /usr/bin/notify-send "📥 Syncing RSS Feeds"
 newsboat -x reload
-/usr/bin/notify-send "📰 RSS Feeds Updated"
+/usr/bin/notify-send "📰 RSS Feeds Updated" "📬 $(newsboat -x print-unread)"
