@@ -1,0 +1,7 @@
+#!/bin/sh
+
+ volume="$(amixer | grep "\[on\]" | cut -d " " -f 7 | head -n 1 | sed 's/\[//g' | sed 's/\]//g')"
+ symbol="🔊"
+ test "$(amixer | grep "Playback" | grep "\[off\]")" && symbol="🔇" && volume="MUTED"
+
+ echo "$symbol $volume"

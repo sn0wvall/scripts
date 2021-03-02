@@ -4,10 +4,12 @@
 case $1 in
 	up)
 		amixer sset Master 2%+
-		#aplay ~/media/fx/ding.wav
 	;;
 	down)
 		amixer sset Master 2%-
-		#aplay ~/media/fx/ding.wav
+	;;
+	toggle)
+		amixer set Master toggle
+		test "$(amixer | grep "Playback" | grep "\[on\]")" && dunstify -r 1003 "🔊 Unmuted" || dunstify -r 1003 "🔇 Muted"
 	;;
 esac
