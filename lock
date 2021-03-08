@@ -2,7 +2,6 @@
 
 export DISPLAY=:0.0
 
-xsel -bc
 cmus-remote -U
 playerctl pause -a & 
 notify-send "DUNST_COMMAND_PAUSE"

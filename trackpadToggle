@@ -1,0 +1,7 @@
+#!/bin/sh
+
+xinput $1 14
+case $1 in
+	enable) notify-send "🟢 Trackpad Enable" ;;
+	disable) notify-send "🔴 Trackpad Disabled";;
+esac

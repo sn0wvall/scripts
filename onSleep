@@ -5,7 +5,6 @@ export DISPLAY=:0
 export XAUTHORITY=/home/beta/.Xauthority
 
 sudo -u beta xsel -bc
-nmcli c down Home
 cmus-remote -U
 playerctl pause -a 
 notify-send "DUNST_COMMAND_PAUSE"
