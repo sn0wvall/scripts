@@ -1,0 +1,39 @@
+#!/bin/sh
+
+action="$(printf "New\nPause\nUnpause\nJump\nStop\nInfo" | dmenu -i)"
+
+test "$action" != "New" && test -z "$(pgrep mpv)" && notify-send "❌ MPV is not running, exiting" && exit 1
+
+case $action in
+	New)
+		podcastLink=$(printf "" | dmenu -i -p "Link:")		
+		mpv -vo null "$podcastLink" --input-ipc-server=/tmp/mpv-socket || notify-send "❌ Error starting MPV"
+	;;
+	Pause)		
+		echo '{ "command": ["set_property", "pause", true] }' | socat - /tmp/mpv-socket
+		notify-send "⏯ Paused Stream"
+	;;
+	Unpause)	
+		echo '{ "command": ["set_property", "pause", false] }' | socat - /tmp/mpv-socket
+		notify-send "⏯ Unpaused Stream"
+	;;
+	Jump)		
+		skipTo=$(printf "" | dmenu -i -p "Skip To:")		
+		echo "{ \"command\": [\"set_property\", \"time-pos\", \"$skipTo\"] }" | socat - /tmp/mpv-socket
+		notify-send "⏩ Jumped to $skipTo"
+	;;
+	Stop)		
+		pkill mpv
+		notify-send "⏹Killed Stream"
+	;;
+	Info)
+		info="⏲ $(echo '{ "command": ["get_property", "time-pos"] }' | socat - /tmp/mpv-socket | jq .data)"
+		info="$info\n📛 $(echo '{ "command": ["get_property", "media-title"] }' | socat - /tmp/mpv-socket | jq .data)"
+		info="$info\n $(echo '{ "command": ["get_property", "percent-pos"] }' | socat - /tmp/mpv-socket | jq .data)"
+
+		notify-send "📺 Stream Information" "$(printf "$info")"
+		
+	;;
+esac
+
+

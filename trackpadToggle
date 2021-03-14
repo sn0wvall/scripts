@@ -1,6 +1,6 @@
 #!/bin/sh
 
-xinput $1 14
+xinput $1 $(xinput list --id-only "DLL075B:01 06CB:76AF Touchpad")
 case $1 in
 	enable) notify-send "🟢 Trackpad Enable" ;;
 	disable) notify-send "🔴 Trackpad Disabled";;
