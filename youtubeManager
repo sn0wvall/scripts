@@ -1,0 +1,33 @@
+#!/bin/bash
+
+genre="$1"
+target="$2"
+playlisted="$3"
+dltype="music"
+
+case $1 in
+	lofi) 		folder="~/media/music/lofi/%(artist)s/%(album)s/%(track)s.%(ext)s\n"		;;
+	doomer) 	folder="~/media/music/doomer/%(artist)s/%(album)s/%(track)s.%(ext)s\n"		;;
+	russiandoomer) 	folder="~/media/music/russiandoomer/%(artist)s/%(album)s/%(track)s.%(ext)s\n"	;;
+	futurefunk) 	folder="~/media/music/futurefunk/%(artist)s/%(album)s/%(track)s.%(ext)s\n"	;;
+	misc) 		folder="~/media/music/misc/%(artist)s/%(album)s/%(track)s.%(ext)s\n"		;;
+	retrochill) 	folder="~/media/music/retrochill/%(artist)s/%(album)s/%(track)s.%(ext)s\n"	;;
+	retrowave) 	folder="~/media/music/retrowave/%(artist)s/%(album)s/%(track)s.%(ext)s\n"	;;
+	classical) 	folder="~/media/music/classical/%(artist)s/%(album)s/%(track)s.%(ext)s\n"	;;
+	video)		
+		folder="~/media/videos/youtube/%(uploader)s/%(title)s-%(upload_date)s.%(ext)s"
+		dltype="video"
+	;;
+
+	*) echo "❌ Invalid Genre" && exit								;;
+esac
+
+echo "🟢 Starting Download"
+
+if [ "$playlisted" = "yes" ]; then
+
+	folder="$(echo "$folder" | sed 's/artist/uploader/g' | sed 's/album/playlist/g' | sed 's/track/title/g' )"
+
+fi
+
+youtube-dl -o "$folder" --config-location "~/.config/youtube-dl/config$dltype" "$target" && echo "🎧 Download Complete" || echo "❌ Youtube-DL Exited"

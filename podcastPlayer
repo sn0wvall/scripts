@@ -7,7 +7,7 @@ test "$action" != "New" && test -z "$(pgrep mpv)" && notify-send "❌ MPV is not
 case $action in
 	New)
 		podcastLink=$(printf "" | dmenu -i -p "Link:")		
-		mpv -vo null "$podcastLink" --input-ipc-server=/tmp/mpv-socket || notify-send "❌ Error starting MPV"
+		mpv -vo null "$podcastLink" --input-ipc-server=/tmp/mpv-socket || notify-send "❌ MPV exited"
 	;;
 	Pause)		
 		echo '{ "command": ["set_property", "pause", true] }' | socat - /tmp/mpv-socket
@@ -27,7 +27,8 @@ case $action in
 		notify-send "⏹Killed Stream"
 	;;
 	Info)
-		info="⏲ $(echo '{ "command": ["get_property", "time-pos"] }' | socat - /tmp/mpv-socket | jq .data)"
+		duration="$(echo '{ "command": ["get_property", "time-pos"] }' | socat - /tmp/mpv-socket | jq .data)"
+		info="⏲ $(date -d@$duration -u +%M:%S) "
 		info="$info\n📛 $(echo '{ "command": ["get_property", "media-title"] }' | socat - /tmp/mpv-socket | jq .data)"
 		info="$info\n $(echo '{ "command": ["get_property", "percent-pos"] }' | socat - /tmp/mpv-socket | jq .data)"
 

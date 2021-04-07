@@ -1,0 +1,6 @@
+#!/bin/sh
+
+pathRaw="$(tree -i -f $HOME | dmenu -i -l 40 -p "Path for sxiv:")"
+path="$(echo $pathRaw | sed 's/~/\/home\/beta/g')"
+
+/usr/local/bin/sxiv "$path"
