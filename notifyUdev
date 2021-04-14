@@ -4,13 +4,19 @@ export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
 export DISPLAY=:0
 export XAUTHORITY=/home/beta/.Xauthority
 
+test "$4" = "bluetooth" && type=" Bluetooth"
+
 test -z "$2" && name="Unnamed" || name="$2"
+test "$name" = "Unnamed" && name="$3"
+test -z "$name" && test "$1" != "hereblue"&& test "$1" != "goneblue" && test "$1" != "gonemonitor" && test "$1" != "heremonitor" && exit
+
+name="$(echo $name | sed 's/\"//g')"
 
 case $1 in
 	here)		dunstify -r 2000 " Removable Device Connected" " $name"	;;
 	gone)		dunstify -r 2001 " Removable Device Disconnected" " $name"	;;
-	hereinput)	dunstify -r 2002 " Input Device Connected" " $name"		;;
-	goneinput)	dunstify -r 2003 " Input Device Disconnected" " $name"	;;
+	hereinput)	dunstify -r 2002 "$type Device Connected" " $name"	;;
+	goneinput)	dunstify -r 2003 "$type Device Disconnected" " $name"	;;
 	full)		dunstify -r 2004 " Battery Fully Charged"			;;
 	heremonitor)	dunstify -r 2007 "🖥 Monitor Connected" 			;;	
 	gonemonitor)	dunstify -r 2008 "🖥 Monitor Disconnected"			;;

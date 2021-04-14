@@ -1,0 +1,5 @@
+#!/bin/sh
+
+websiteTarg="$(printf "" | dmenu -i -p "Website to Open")"
+
+surf "$websiteTarg"
