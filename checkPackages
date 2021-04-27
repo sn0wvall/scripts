@@ -2,12 +2,12 @@
 
 export DISPLAY=:0
 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
-  
 
 ping -c 2 1.1.1.1>/dev/null || exit 1
 
-/usr/bin/notify-send "📥 Syncing Repositories"
+updatesCount="$(checkupdates | wc -l)"
+updates="$(checkupdates | head -n 30)"
+test $updatesCount -gt 30 && updatesAdditional="\n\n📋 <i>And $(expr $updatesCount - 30) more</i>\n"
+checkupdates | grep "linux-lts" >/dev/null && updatesAdditional="$updatesAdditional\n<b>📦 Kernel Update Available</b>"
 
-active="$(checkupdates)"
-
-test -n "$active" && /usr/bin/notify-send "📬 Updates are available:" "\n$active" || /usr/bin/notify-send "📪 No updates available"
+test -n "$updates" && /usr/bin/notify-send "📬 Updates are available:" "\n$updates$updatesAdditional\n" || /usr/bin/notify-send "📪 No updates available"

@@ -19,17 +19,12 @@ test "$1" = "verbose" &&
 	echo &&
 	echo "$(checkBattery) $(cat /sys/class/power_supply/BAT0/status)" &&
 	echo &&
-	echo "$(checkIptables)" &&
-	echo "$(checkWifi)" &&
-	echo "$(checkVPN)" &&
+	echo "$(checkWifi raw)" &&
 	echo &&
-	echo "$(checkUsage)" &&
+	echo "$(checkUsage mem)" &&
 	echo "$(checkTemp)" &&
 	echo &&
-        echo "$(date +%c)" &&
-	echo &&
-	echo "$title, $artist" &&
-	echo &&
+        echo "$(date '+%c %d/%m/%y')" &&
        	exit 0  
 
 # Simple Output

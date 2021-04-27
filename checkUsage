@@ -2,7 +2,7 @@
 
 case $1 in
 	mem)
-		echo " $(free --giga -h | grep Mem | cut -d " " -f20)"
+		echo " $(free --giga -h | grep Mem | sed 's/ //g' | sed 's/Mem://g' | cut -d 'G' -f2)G" 
 	;;
 	cpu)
 		echo " $()"

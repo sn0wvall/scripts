@@ -1,9 +1,8 @@
 #!/bin/bash
 
 test "$1" = "v" &&
-	echo  " $(df -H --output=target,avail,pcent /home/beta | tail -n 1)" &&
-	echo  " $(df -H --output=target,avail,pcent / | tail -n 1)" &&
-	echo  " $(df -H --output=target,avail,pcent /boot/efi | tail -n 1)" &&
+	echo  " $(df -H --output=avail,pcent /home/beta | tail -n 1)" &&
+	echo  " $(df -H --output=avail,pcent / | tail -n 1)" &&
 	exit 0
 
 echo -n 🏢 $(df -h --output=avail /home/beta | tail -n 1)
