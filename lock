@@ -4,6 +4,6 @@ export DISPLAY=:0.0
 
 cmus-remote -U
 playerctl pause -a & 
-notify-send "DUNST_COMMAND_PAUSE"
+dunstctl set-paused true
 
-i3lock -ent --pass-media-keys -i ~/media/images/bkg/lockBackground.png --insidecolor=00000000 --ringcolor=000000ff --keyhlcolor=ffffffff --bshlcolor=ffffffff --separatorcolor=000000ff --linecolor=000000ff --insidevercolor=00000000 --ringvercolor=0099ffff --wrongtext="" --veriftext="" --noinputtext="" --insidewrongcolor=00000000 --ringwrongcolor=900000ff && notify-send "DUNST_COMMAND_RESUME"
+i3lock -ent --pass-media-keys -i ~/media/images/bkg/lockBackground.png --inside-color=00000000 --ring-color=000000ff --keyhl-color=ffffffff --bshl-color=ffffffff --separator-color=000000ff --line-color=000000ff --insidever-color=00000000 --ringver-color=0099ffff --wrong-text="" --verif-text="" --noinput-text="" --insidewrong-color=00000000 --ringwrong-color=900000ff && dunstctl set-paused false
