@@ -1,0 +1,15 @@
+#!/bin/sh
+
+one="$(curl -s "https://api.openweathermap.org/data/2.5/forecast?q=London&appid=aa80d2004ff0be874a3ee9ecc61ccdcb" | jq -r '.list[0].pop' | sed 's/null/0/g')"
+two="$(curl -s "https://api.openweathermap.org/data/2.5/forecast?q=London&appid=aa80d2004ff0be874a3ee9ecc61ccdcb" | jq -r '.list[1].pop' | sed 's/null/0/g')"
+three="$(curl -s "https://api.openweathermap.org/data/2.5/forecast?q=London&appid=aa80d2004ff0be874a3ee9ecc61ccdcb" | jq -r '.list[2].pop' | sed 's/null/0/g')"
+four="$(curl -s "https://api.openweathermap.org/data/2.5/forecast?q=London&appid=aa80d2004ff0be874a3ee9ecc61ccdcb" | jq -r '.list[3].pop' | sed 's/null/0/g')"
+five="$(curl -s "https://api.openweathermap.org/data/2.5/forecast?q=London&appid=aa80d2004ff0be874a3ee9ecc61ccdcb" | jq -r '.list[4].pop' | sed 's/null/0/g')"
+six="$(curl -s "https://api.openweathermap.org/data/2.5/forecast?q=London&appid=aa80d2004ff0be874a3ee9ecc61ccdcb" | jq -r '.list[5].pop' | sed 's/null/0/g')"
+seven="$(curl -s "https://api.openweathermap.org/data/2.5/forecast?q=London&appid=aa80d2004ff0be874a3ee9ecc61ccdcb" | jq -r '.list[6].pop' | sed 's/null/0/g')"
+eight="$(curl -s "https://api.openweathermap.org/data/2.5/forecast?q=London&appid=aa80d2004ff0be874a3ee9ecc61ccdcb" | jq -r '.list[7].pop' | sed 's/null/0/g')"
+
+avg="$(calc "(($one + $two + $three + $four + $five + $six + $seven + $eight) / 8) * 100" | awk '{print int($1+0.5)}')%"
+test -z $one && avg="n/a"
+
+echo "$avg"

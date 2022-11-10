@@ -13,15 +13,15 @@ test -z "$name" && test "$1" != "hereblue"&& test "$1" != "goneblue" && test "$1
 name="$(echo $name | sed 's/\"//g')"
 
 case $1 in
-	here)		dunstify -r 2000 " Removable Device Connected" " $name"	;;
-	gone)		dunstify -r 2001 " Removable Device Disconnected" " $name"	;;
-	hereinput)	dunstify -r 2002 "$type Device Connected" " $name"	;;
-	goneinput)	dunstify -r 2003 "$type Device Disconnected" " $name"	;;
-	full)		dunstify -r 2004 " Battery Fully Charged"			;;
-	heremonitor)	dunstify -r 2007 "🖥 Monitor Connected" 			;;	
-	gonemonitor)	dunstify -r 2008 "🖥 Monitor Disconnected"			;;
-	herepci)	dunstify -r 2009 "🚠 PCI Device Connected" "$name"		;;	
-	gonepci)	dunstify -r 2010 "🚠 PCI Device Disconnected" "$name"		;;
+	here)		dunstify -r 2000 " Removable Device Connected" " $name"			;;
+	gone)		dunstify -r 2001 " Removable Device Disconnected" " $name"			;;
+	hereinput)	dunstify -r 2002 "$type Device Connected" " $name"				;;
+	goneinput)	dunstify -r 2003 "$type Device Disconnected" " $name"	&& playerctl stop	;;
+	full)		dunstify -r 2004 " Battery Fully Charged"					;;
+	heremonitor)	dunstify -r 2007 "🖥 Monitor Connected" 					;;	
+	gonemonitor)	dunstify -r 2008 "🖥 Monitor Disconnected"					;;
+	herepci)	dunstify -r 2009 "🚠 PCI Device Connected" "$name"				;;	
+	gonepci)	dunstify -r 2010 "🚠 PCI Device Disconnected" "$name"				;;
 esac
 
 test "$4" = "crypto_LUKS" && dunstify -r 2006 " Crypt Device Detected"

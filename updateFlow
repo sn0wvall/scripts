@@ -1,0 +1,12 @@
+#!/bin/sh
+
+ping -c 1 archlinux.org>/dev/null || echo "No Net" || exit 4
+
+test "$($HOME/.bin/checkWifi pure)" = "KGS" && echo "Blocked" && exit 10
+
+rate=$(curl -s "https://nitter.fdn.fr/riverlevel_1181/rss" | grep "flow" | sed -n 1p | cut -d "s" -f2 | sed "s/\//\/s/g" | sed "s/ //g")
+ratecached=$(cat /home/beta/.cache/riverflow)
+
+echo "$rate $ratecached"
+
+test "$rate" != "$ratecached" && echo $ratecached > /home/beta/.cache/riverflowold && echo $rate > /home/beta/.cache/riverflow && exit 3 || exit 6

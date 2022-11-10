@@ -1,0 +1,13 @@
+#!/bin/sh
+
+#change="D"
+rate=$(cat /home/beta/.cache/riverflow)
+rateold=$(cat /home/beta/.cache/riverflowold)
+rateint=$(echo $rate | sed "s/m³\/s//g")
+rateoldint=$(echo $rateold | sed "s/m³\/s//g")
+
+if (( $(echo "$rateint > $rateoldint" |bc -l) )); then
+	change="▲"
+fi
+
+echo "$change $rateint"

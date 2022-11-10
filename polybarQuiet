@@ -1,0 +1,5 @@
+#!/bin/sh
+
+polybar example -r &
+(xdo id -m -N Polybar && bspc config top_padding 0 && polybar-msg cmd hide)&
+

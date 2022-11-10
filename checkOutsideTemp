@@ -1,0 +1,10 @@
+#!/bin/sh
+
+tempRaw="$(curl -s "https://api.openweathermap.org/data/2.5/weather?q=London&appid=aa80d2004ff0be874a3ee9ecc61ccdcb" | jq -r ".main.temp")"
+temp=$(calc $tempRaw-273.15 | awk '{print $1}')
+tempInt=$(echo $temp | awk '{print int($1+0.5)}')
+tempInt="$tempInt °C"
+
+test "$tempInt" = "0 °C" && tempInt="n/a"
+
+echo "$tempInt"

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+test -z $EDITOR && EDITOR=nano
+
+searchRaw="$(tree -i -f $HOME | rofi -theme ~/.config/rofi/search.rasi  -font "JetBrainsMono Nerd Font 15" -dmenu -p "Search:")"
+search="$(echo $searchRaw | sed 's/ /+/g')"
+
+
+test -z "$search" || firefox "https://www.startpage.com/sp/search?query=$search"

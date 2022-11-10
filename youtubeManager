@@ -14,6 +14,7 @@ case $1 in
 	retrochill) 	folder="~/media/music/retrochill/%(artist)s/%(album)s/%(track)s.%(ext)s\n"	;;
 	retrowave) 	folder="~/media/music/retrowave/%(artist)s/%(album)s/%(track)s.%(ext)s\n"	;;
 	classical) 	folder="~/media/music/classical/%(artist)s/%(album)s/%(track)s.%(ext)s\n"	;;
+	rap) 	folder="~/media/music/rap/%(artist)s/%(album)s/%(track)s.%(ext)s\n"	;;
 	video)		
 		folder="~/media/videos/youtube/%(uploader)s/%(title)s-%(upload_date)s.%(ext)s"
 		dltype="video"

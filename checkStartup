@@ -1,10 +1,6 @@
 #!/bin/sh
 
 sleep 30s
-notify-send "$(~/.bin/riverwarnings)"
-~/.bin/checkCalendar
-notify-send "📅 $(khal list)"
-sleep 10s
 ~/.bin/checkPackages
 sleep 3s
 ~/.bin/checkRSS

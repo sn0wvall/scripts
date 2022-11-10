@@ -1,6 +1,8 @@
 #!/bin/sh
 
-selection="$(printf "$(nmcli c show | grep -Eo '^[^ ]+' | grep -v NAME)" | dmenu -i -l 30 -fn "Source Code Pro For Powerline" -p "Bring $1:")"
+selection="$(printf "$(nmcli c show | grep -Eo '^[^ ]+' | grep -v NAME)" | rofi -theme ~/.config/rofi/curvy.rasi  -font "JetBrainsMono Nerd Font 15" -dmenu -p "Bring $1:")"
+
+test -z $selection && exit 3
 
 test "$1" = "up" && action="🌐 Connecting to" || action="❌ Disconnecting from"
 

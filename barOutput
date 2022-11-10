@@ -1,14 +1,5 @@
 #!/bin/sh
 
-artist=$(cmus-remote -Q |
-		grep --text '^tag artist' |
-		sed '/^tag artistsort/d' |
-		awk '{gsub("tag artist ", "");print}')
-title=$(cmus-remote -Q  |
-		grep --text '^tag title' |
-		sed -e 's/tag title //' |
-		awk '{gsub("tag title ", "");print}')
-
 audioDevice=$(pactl list sinks | grep '^[[:space:]]Description:' | head -n $(( 1 + 1 )) | tail -n 1 | sed "s/^[ \t]*//" | sed 's/Description: //g')
 test -z $(pactl list sinks | grep '^[[:space:]]Name:' | head -n $(( 1 + 1 )) | tail -n 1 | grep bluez) || blue=" "
 
@@ -20,6 +11,7 @@ test "$1" = "verbose" &&
 	echo "$(checkBattery) $(cat /sys/class/power_supply/BAT0/status)" &&
 	echo &&
 	echo "$(checkWifi raw)" &&
+	echo "$(checkVPN raw)" &&
 	echo &&
 	echo "$(checkUsage mem)" &&
 	echo "$(checkTemp)" &&
@@ -29,4 +21,4 @@ test "$1" = "verbose" &&
 
 # Simple Output
 
-echo "$(checkSpace) | $(checkBattery) | $(checkWifi raw) | $(checkTime) | $blue$(checkVolume)"
+echo "$(checkBattery) | $(checkWifi raw) | $(checkTime) | $blue$(checkVolume)"

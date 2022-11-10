@@ -1,0 +1,11 @@
+#!/bin/sh
+
+now="$(date +%s)"
+sunset="$(curl -s "https://api.openweathermap.org/data/2.5/weather?q=London&appid=aa80d2004ff0be874a3ee9ecc61ccdcb" | jq -r '.sys.sunset')"
+
+timeRemainingRaw="$(calc $sunset - $now - 3600| sed 's/\t//g')"
+timeRemaining="$(date -d "@$timeRemainingRaw" +%H:%M)"
+
+test -z $sunset && timeRemaining="n/a"
+
+echo $timeRemaining

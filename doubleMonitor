@@ -14,7 +14,8 @@ case $1 in
 	double)
 		xrandr --output eDP1 --auto
 		xrandr --output DP1 --auto
-		xrandr --output DP1 --primary --above eDP1
+		xrandr --output DP1 --primary
+		$HOME/.bin/bspwmMonitorCalibrate
 		echo "🖥 Connecting to Monitor DP1"
 	;;
 	single)
@@ -30,5 +31,4 @@ case $1 in
 	;;
 esac
 
-bspc monitor eDP1 -d $w1 $w2 $w3 $w4 $w5 $w6 $w7
-test "$(xrandr | grep 1920x1080 | grep "*" | wc -l)" = "2" && bspc monitor DP1 -d $w8 $w9 && bspc monitor DP1 --swap "^2"
+setxkbmap gb

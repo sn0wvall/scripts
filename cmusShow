@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cmus-remote -Q &>/dev/null || exit 2
+
+test -z "$(cmus-remote -Q | grep --text '^tag title')" && exit 3
+
+title="$(cmus-remote -Q | grep --text '^tag title' | sed -e 's/tag title //' | awk '{gsub("tag title ", "");print}')"
+artist="$(cmus-remote -Q | grep --text '^tag artist' | sed -e 's/tag artist //' | awk '{gsub("tag artist  ", "");print}')"
+echo "💿 $title by $artist"

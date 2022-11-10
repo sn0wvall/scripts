@@ -1,0 +1,13 @@
+#!/bin/sh
+
+chosen="$(printf "Thunderbird\nOutlook\nDiscord\nTeams" | rofi -theme ~/.config/rofi/curvy2.rasi -font "JetBrainsMono Nerd Font 15" -dmenu -p "󰇮")"
+
+test -z "$chosen" && exit 2
+
+
+case $chosen in
+	Thunderbird) thunderbird &					;;
+	Outlook) chromium "https://outlook.office365.com/mail/inbox" 	;;
+	Discord) discord &						;;
+	Teams) chromium "https://teams.microsoft.com/"			;;
+esac

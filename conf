@@ -1,6 +1,6 @@
 #!/bin/bash
 
-shortname=(dunst vim rifle ranger colours urxvt bspwm sxhkd st dwm zsh cmus newsboat zathura url lf polybar sxiv khal mutt offlineimap)
+shortname=(dunst vim rifle ranger colours urxvt bspwm sxhkd st dwm zsh cmus newsboat zathura url lf polybar sxiv khal mutt offlineimap conky)
 
 #THIS MUST BE IN THE SAME ORDER AS THE SHORTNAME ARRAY
 
@@ -25,7 +25,8 @@ namepath=(\
 	~/.apps/sxiv/config.h\
 	~/.config/khal/config\
 	~/.config/mutt/muttrc\
-	~/.config/offlineimap/config
+	~/.config/offlineimap/config\
+	~/.config/conky/conky.conf\
 )
 
 attempts=0

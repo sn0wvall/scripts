@@ -9,4 +9,7 @@ w6="🔧"
 w7="🎧"
 w8="🖥 "
 w9="🖥 "
-test "$(xrandr | grep 1920x1080 | grep "*" | wc -l)" = "1" && bspc monitor eDP1 -d $w1 $w2 $w3 $w4 $w5 $w6 $w7 $w8 $w9
+
+#test "$(xrandr | grep 1920x1080 | grep "*" | wc -l)" = "1" #&& bspc monitor eDP1 -d $w1 $w2 $w3 $w4 $w5 $w6 $w7 $w8 $w9
+
+#test "$(xrandr | grep 1920x1080 | grep "*" | wc -l)" != "1" #&& bspc monitor eDP1 --remove && bspc monitor DP1 -d $w1 $w2 $w3 $w4 $w5 $w6 $w7 $w8 $w9
