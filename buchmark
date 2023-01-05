@@ -1,0 +1,6 @@
+#!/bin/sh
+
+bmPath="$HOME/.local/share/buchmarks"
+
+selection="$(cat $bmPath | dmenu)"
+cat $bmPath | grep "$selection" && $BROWSER "$selection" || echo $selection >> $bmPath
