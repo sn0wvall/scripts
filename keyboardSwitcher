@@ -1,0 +1,4 @@
+#!/bin/sh
+
+selection="$(printf "gb\ngr" | rofi -theme ~/.config/rofi/curvy.rasi  -font "JetBrainsMono Nerd Font 15" -dmenu -p "Keyboard Code:")"
+setxkbmap "$selection"
